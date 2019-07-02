@@ -8,6 +8,10 @@ export default class CarService {
     getAll() {
         return axios.get('cars');
     }
+
+    submitCar (newCar) {
+        return axios.post('cars', newCar)
+    }
 }
 
 export const carService= new CarService()

@@ -6,7 +6,8 @@
                     <p class="navbar-brand" href="#">Cars App</p>
                 </div>
                 <ul class="nav navbar-nav">
-                    <router-link to="/cars">Cars</router-link>
+                    <li><router-link to="/cars">Cars</router-link></li>
+                    <li><router-link to="/add">Add Car</router-link></li>
                 </ul>
             </div>
         </nav>
