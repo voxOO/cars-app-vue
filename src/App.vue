@@ -1,17 +1,26 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <p class="navbar-brand" href="#">Cars App</p>
+                </div>
+                <ul class="nav navbar-nav">
+                    <router-link to="/cars">Cars</router-link>
+                </ul>
+            </div>
+        </nav>
+        <router-view />
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppCars from './components/AppCars.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    AppCars
   }
 }
 </script>
