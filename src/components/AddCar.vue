@@ -65,7 +65,7 @@ export default {
   methods : {
      submitCar () {
        carService.submitCar(this.newCar)
-       .then()
+       .then( this.$router.push('/cars'))
        .catch(e=> {
            this.errors.push(e)
        })
