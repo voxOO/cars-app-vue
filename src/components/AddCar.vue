@@ -34,6 +34,7 @@
         <div class="form-group">
             <button type="submit" class="btn btn-primary" >Add Car</button>
         </div>
+         <p class="btn btn-secondary" @click="resetForm">Reset</p>
    </form>
     </div>
 </template>
@@ -69,8 +70,17 @@ export default {
        .catch(e=> {
            this.errors.push(e)
        })
-    }
+    },
+    resetForm() {
+      this.newCar.brand= 
+      this.newCar.model= 
+      this.newCar.maxSpeed =
+      this.newCar.isAutomatic=
+      this.newCar.engine=
+      this.newCar.numberOfDoors= '';
+      
   }
+}
 }
 </script>
 
