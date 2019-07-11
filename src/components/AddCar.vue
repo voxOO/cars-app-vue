@@ -3,32 +3,32 @@
     <form @submit.prevent="submitCar">
         <div class="form-group">
             <label for="brand">Brand: </label>
-            <input type="text" id="brand" class="form-control" v-model="newCar.brand" required/>
+            <input type="text" id="brand" class="form-control" v-model="newCar.brand" minlength=2 maxlenght=100 required/>
         </div>
         <div class="form-group">
             <label for="model">Model : </label>
-            <input type="text" id="model" class="form-control" v-model="newCar.model" required/>
+            <input type="text" id="model" class="form-control" v-model="newCar.model" minlength=2 maxlenght=100 required/>
         </div>
         <div class="form-group">
-            <select  id="" class="" v-model="newCar.year">
+            <select  id="" class="" v-model="newCar.year" required>
                 <option value="0">Year:</option>
                 <option v-for="year in years" :key="year" :value="year" >{{ year }}</option>
             </select>
         </div>
         <div class="form-group">
             <label for='maxSpeed'>Max Speed :</label>
-            <input type="number" id="maxSpeed" class="form-control" v-model.number="newCar.maxSpeed" required>
+            <input type="number" id="maxSpeed" class="form-control" v-model.number="newCar.maxSpeed">
         </div>
         <div class="form-group">
             <label for='numberOfDoors'>Number Of Doors :</label>
-            <input type="number" id="numberOfDoors" class="form-control" v-model.number="newCar.numberOfDoors" required>
+            <input type="number" id="numberOfDoors" class="form-control" v-model.number="newCar.numberOfDoors" required/>
         </div>
         <div class="form-group">
-            <input type="checkbox" name="isAutomatic"  value=true v-model="newCar.isAutomatic"> isAutomatic 
-            <input type="radio" name="engine1" value='diesel' v-model="newCar.engine"> Diesel
-            <input type="radio" name="engine2" value='petrol' v-model="newCar.engine"> Petrol
-            <input type="radio" name="engine3" value='electric' v-model="newCar.engine"> Electric
-            <input type="radio" name="engine4" value='hybrid' v-model="newCar.engine"> Hybrid
+            <input type="checkbox" name="isAutomatic"  value=true v-model="newCar.isAutomatic" required/> isAutomatic 
+            <input type="radio" name="engine" value='diesel' v-model="newCar.engine" required/> Diesel
+            <input type="radio" name="engine" value='petrol' v-model="newCar.engine" > Petrol
+            <input type="radio" name="engine" value='electric' v-model="newCar.engine" > Electric
+            <input type="radio" name="engine" value='hybrid' v-model="newCar.engine" > Hybrid
         </div>
 
         <div class="form-group">
@@ -50,9 +50,9 @@ export default {
             newCar: {
                 "brand": "",
                 "model": "",
-                "year": 0,
-                "maxSpeed": 0,
-                "numberOfDoors": 0,
+                "year": '',
+                "maxSpeed": "",
+                "numberOfDoors": "",
                 "isAutomatic": false,
                 "engine": "",
             }
@@ -75,9 +75,10 @@ export default {
     resetForm() {
       this.newCar.brand= ''
       this.newCar.model= ''
-      this.newCar.year = 0
-      this.newCar.maxSpeed = 0
-      this.newCar.numberOfDoors= 0;
+      this.newCar.year = ''
+      this.newCar.maxSpeed = ''
+      this.newCar.numberOfDoors= ''
+
       this.newCar.isAutomatic= false
       this.newCar.engine= ''
   },
