@@ -34,6 +34,7 @@
                 </td>
                 <td>
                     <router-link v-bind:to="'/edit/' + car.id" class="btn btn-secondary">Edit</router-link>
+                    <button class="btn btn-secondary" @click="deleteCar(car.id)">Delete</button>
                 </td>
             </tr>
         </table>
@@ -59,5 +60,21 @@ export default {
                 })
             //Thnis will call service
         },
+    methods: {
+        deleteCar(id) {
+            carService.deleteCar(id)
+            .then(response => {
+                this.$router.go();
+            }).catch(e=> {
+                this.errors.push(e)
+            })
+        }
+    }
 }
 </script>
+
+<style scoped>
+   .btn {
+        margin-right: 3px
+    }
+</style>
