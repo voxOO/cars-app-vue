@@ -12,6 +12,15 @@ export default class CarService {
     submitCar (newCar) {
         return axios.post('cars', newCar)
     }
+
+    getSingleCar(id) {
+        return axios.get('cars/' + id);
+    }
+
+    editCar(id, editedCar) {
+        return axios.put('cars/' + id, editedCar);
+    }
+
 }
 
-export const carService= new CarService()
+export const carService= new CarService();

@@ -32,6 +32,9 @@
                 <td>
                     {{ car.numberOfDoors}}
                 </td>
+                <td>
+                    <router-link v-bind:to="'/edit/' + car.id" class="btn btn-secondary">Edit</router-link>
+                </td>
             </tr>
         </table>
     </div>

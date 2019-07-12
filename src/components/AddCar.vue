@@ -24,7 +24,7 @@
             <input type="number" id="numberOfDoors" class="form-control" v-model.number="newCar.numberOfDoors" required/>
         </div>
         <div class="form-group">
-            <input type="checkbox" name="isAutomatic"  value=true v-model="newCar.isAutomatic" required/> isAutomatic 
+            <input type="checkbox" name="isAutomatic"  value=true v-model="newCar.isAutomatic"> isAutomatic 
             <input type="radio" name="engine" value='diesel' v-model="newCar.engine" required/> Diesel
             <input type="radio" name="engine" value='petrol' v-model="newCar.engine" > Petrol
             <input type="radio" name="engine" value='electric' v-model="newCar.engine" > Electric
@@ -33,6 +33,7 @@
 
         <div class="form-group">
             <button type="submit" class="btn btn-primary" >Add Car</button>
+            <button class="btn btn-primary edit" @click="editCar">Edit Car</button>
         </div>
          <p class="btn btn-secondary" @click="resetForm">Reset</p>
          <p class="btn btn-secondary" @click="previewInput">Preview</p>
@@ -42,7 +43,7 @@
 
 <script>
 import Axios from 'axios';
-import { carService } from '../services/cars'
+import CarService, { carService } from '../services/cars'
 
 export default {
     data() {
@@ -55,7 +56,7 @@ export default {
                 "numberOfDoors": "",
                 "isAutomatic": false,
                 "engine": "",
-            }
+            },
         }
     },
     computed : {
@@ -72,6 +73,14 @@ export default {
            this.errors.push(e)
        })
     },
+     editCar () {
+        carService.editCar(this.$route.params.id, this.newCar)
+        .then(this.$router.push('/cars'))
+        .catch(e=> {
+            this.errors.push(e)
+        })
+     },
+
     resetForm() {
       this.newCar.brand= ''
       this.newCar.model= ''
@@ -93,13 +102,25 @@ export default {
           "\nEngine type:" + this.newCar.engine
       );
   }
-}
+ },
+ created () {
+     if (this.$route.params.id) {
+        carService.getSingleCar(this.$route.params.id).then ( response => {
+            this.newCar= response.data;
+            //console.log(this.singleCar);
+        });
+     }
+ }
 }
 </script>
 
 <style scoped>
     form p {
         margin-right:3px;
+    }
+
+    .edit {
+        float: right;
     }
 </style>
 

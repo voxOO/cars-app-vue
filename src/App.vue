@@ -5,9 +5,9 @@
                 <div class="navbar-header">
                     <p class="navbar-brand" href="#">Cars App</p>
                 </div>
-                <ul class="nav navbar-nav">
-                    <li><router-link to="/cars">Cars</router-link></li>
-                    <li><router-link to="/add">Add Car</router-link></li>
+                <ul class="nav">
+                    <li class="nav-item"><router-link  class='btn btn-primary nav-link' to="/cars">Cars</router-link></li>
+                    <li class="nav-item"><router-link  class='btn btn-primary nav-link' to="/add">Add Car</router-link></li>
                 </ul>
             </div>
         </nav>
@@ -35,4 +35,9 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+li {
+  margin-right: 3px;
+}
+
 </style>
